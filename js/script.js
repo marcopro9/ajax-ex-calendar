@@ -1,29 +1,27 @@
 $(document).ready(
   function (){
+    // Scelgo una data iniziale assegnandola a una variabile...
+    var dataInizio = moment('01-01-2018','dd-mm-yyyy');
+    //console.log(dataInizio);
 
-    arrayGiorniPerMese();
-    function arrayGiorniPerMese() {
+    giorniMese();
+    // scrivo una funzione...
+    function giorniMese(){
       var source = document.getElementById("entry-template").innerHTML;
       var template = Handlebars.compile(source);
-      var giorniDelMese = moment().daysInMonth();
-      var arrayGiorni = [];
-
-
-      while(giorniDelMese) {
-        var inizio = moment().date(giorniDelMese);
-        arrayGiorni.push(inizio);
-        arrayGiorni.reverse();
-        giorniDelMese--;
-      }
-      for (var i = 0; i < arrayGiorni.length; i++) {
-        var singoloGiorno = arrayGiorni[i];
-        singoloGiorno = singoloGiorno.format('dddd D');
-        var html = template(singoloGiorno);
-        console.log(singoloGiorno);
+      /*
+        ...che prenda la dataInizio, con un determinato format,
+        aggiunga tutti i giorni del mese tramite il ciclo for,
+        e li appenda alla ul .calendar
+      */
+      for (var i = 0; i <= 30; i++) {
+        var giorno = dataInizio.format('dddd D');
+        console.log(giorno);
+        var stampa = {giorno};
+        var html = template(stampa);
+        dataInizio.add(1, 'day');
         $('.calendar').append(html);
       }
-
-      return arrayGiorni;
     }
   }
 );
