@@ -12,16 +12,14 @@ $(document).ready(
       method: "GET",
       success: function (data, stato) {
         var festivita = data.response;
-
-        for (var key in festivita) {
-          var giornoRosso = festivita[key];
+        for (var i = 0; i < festivita.length; i++) {
+          var giornoRosso = festivita[i];
           var dataAttr = $('.giorno').attr('data-giorno');
-          // console.log(giornoRosso);
-          console.log(dataAttr);
+          // console.log(giornoRosso.date);
+          // console.log(dataAttr);
           if ( dataAttr === giornoRosso.date) {
-            $('.giorno').addClass('rosso');
+            $('.giorno[data-giorno="' + dataAttr + '"]').addClass('rosso').append(giornoRosso.name);
           }
-          // console.log(festivita[key]);
         }
       },
       error: function (richiesta, stato, errori) {
