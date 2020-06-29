@@ -15,11 +15,11 @@ $(document).ready(
 
         for (var key in festivita) {
           var giornoRosso = festivita[key];
-          console.log(giornoRosso.date);
-          if (giornoRosso.date === dataInizio._i) {
+          var dataAttr = $('.giorno').attr('data-giorno');
+          // console.log(giornoRosso);
+          console.log(dataAttr);
+          if ( dataAttr === giornoRosso.date) {
             $('.giorno').addClass('rosso');
-          } else {
-            $('.giorno').addClass('nero');
           }
           // console.log(festivita[key]);
         }
@@ -39,10 +39,11 @@ $(document).ready(
         e li appenda alla ul .calendar
       */
       for (var i = 0; i <= 30; i++) {
+        var data = dataInizio.format('YYYY-MM-DD');
         var giorno = dataInizio.format('D dddd');
-        var stampa = {giorno};
+        var stampa = {data, giorno};
         var html = template(stampa);
-        dataInizio.add(1, 'day');
+        dataInizio.add(1,'days');
         // stampo tramite handlebars
         $('.calendar').append(html);
       }
