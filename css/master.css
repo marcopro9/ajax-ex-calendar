@@ -6,10 +6,10 @@
 }
 /* fine reset */
 
-.calendar{
+.calendario{
   list-style: none;
 }
-.calendar li{
+.calendario li{
   display: inline-block;
   height: 150px;
   width: 150px;
@@ -17,9 +17,9 @@
   font-size: 20px;
   padding-left: 10px;
 }
-.nero{
-  color: #000;
-}
 .rosso{
   color: red;
+}
+button{
+  display: inline-block;
 }
